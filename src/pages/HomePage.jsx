@@ -1,17 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-Layers,
-ArrowRight,
-Check,
-Users,
-FileText,
-BarChart,
-Package,
-Zap,
-Star
-} from 'lucide-react';
+import { Check } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -82,15 +72,19 @@ features: [
 
 ];
 
+const formatPrice = (price) => {
+
+if(price === '0') return 'Grátis';
+
+return `R$ ${price},00`;
+
+};
 
 return (
 
-<div className="min-h-screen flex flex-col bg-white">
+<div className="min-h-screen bg-white">
 
-
-{/* PRICING SECTION */}
-
-<section id="pricing" className="py-24 bg-white">
+<section className="py-24">
 
 <div className="container mx-auto px-6">
 
@@ -110,53 +104,34 @@ Comece grátis e evolua conforme cresce
 
 </div>
 
-
 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-
 
 {plans.map((plan, i) => (
 
-
 <motion.div
-
 key={i}
-
-initial={{ opacity: 0, y: 30 }}
-
+initial={{ opacity: 0, y: 40 }}
 animate={{ opacity: 1, y: 0 }}
-
 transition={{ delay: i * 0.1 }}
-
 >
-
 
 <Card
 
 className={`
 
 relative
-
 flex
-
 flex-col
-
 rounded-2xl
-
 transition-all
-
 duration-300
-
 hover:scale-105
 
-${
-plan.highlight
-?
+${plan.highlight
 
-'border-blue-500 shadow-2xl ring-2 ring-blue-500'
+? 'border-blue-600 shadow-2xl ring-2 ring-blue-600 scale-105'
 
-:
-
-'border-stone-200 shadow-md'
+: 'border-stone-200 shadow-md'
 
 }
 
@@ -164,12 +139,11 @@ plan.highlight
 
 >
 
-
 {plan.highlight && (
 
-<div className="absolute -top-3 left-1/2 -translate-x-1/2">
+<div className="absolute -top-4 left-1/2 -translate-x-1/2">
 
-<span className="bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full">
+<span className="bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow">
 
 MAIS POPULAR
 
@@ -179,36 +153,33 @@ MAIS POPULAR
 
 )}
 
-
-
 <CardContent className="p-8 flex flex-col flex-1">
 
-
-<h3 className="text-xl font-bold mb-2">
+<h3 className="text-xl font-bold mb-3">
 
 {plan.name}
 
 </h3>
 
-
-
 <div className="mb-4">
 
-<span className="text-5xl font-extrabold">
+<span className="text-4xl font-extrabold text-stone-900">
 
-R${plan.price}
+{formatPrice(plan.price)}
 
 </span>
 
-<span className="text-stone-500">
+{plan.price !== '0' && (
+
+<span className="text-stone-500 ml-1">
 
 /mês
 
 </span>
 
+)}
+
 </div>
-
-
 
 <p className="text-stone-500 mb-6">
 
@@ -216,10 +187,7 @@ R${plan.price}
 
 </p>
 
-
-
 <ul className="space-y-3 mb-8 flex-1">
-
 
 {plan.features.map((feature, index) => (
 
@@ -237,30 +205,23 @@ R${plan.price}
 
 ))}
 
-
 </ul>
 
-
 <Link to="/signup">
-
 
 <Button
 
 className={`
 
 w-full
-
 font-semibold
+h-11
 
-${
-plan.highlight
-?
+${plan.highlight
 
-'bg-blue-600 hover:bg-blue-700 text-white'
+? 'bg-blue-600 hover:bg-blue-700 text-white'
 
-:
-
-'bg-stone-900 hover:bg-stone-800 text-white'
+: 'bg-stone-900 hover:bg-stone-800 text-white'
 
 }
 
@@ -268,27 +229,19 @@ plan.highlight
 
 >
 
-
 {plan.btn}
-
 
 </Button>
 
-
 </Link>
-
 
 </CardContent>
 
-
 </Card>
-
 
 </motion.div>
 
-
 ))}
-
 
 </div>
 
@@ -296,12 +249,9 @@ plan.highlight
 
 </section>
 
-
-
 </div>
 
 );
-
 
 };
 
