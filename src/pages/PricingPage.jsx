@@ -1,291 +1,182 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Check, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Check } from 'lucide-react';
 
 const PricingPage = () => {
-  return (
-    <div className="flex h-screen bg-stone-50">
-      <Sidebar />
 
-      <div className="flex-1 flex flex-col overflow-hidden">
+const plans = [
 
-        <Header />
+{
+name: "Plano Grátis 7 Dias",
+price: "0",
+desc: "Teste grátis por 7 dias",
+features: [
+"5 clientes",
+"5 orçamentos",
+"Financeiro básico",
+"Suporte email"
+],
+highlight: false
+},
 
-        <main className="flex-1 overflow-y-auto p-6 lg:p-10">
+{
+name: "Starter",
+price: "49",
+desc: "Para pequenas empresas",
+features: [
+"15 clientes",
+"30 orçamentos",
+"Financeiro completo",
+"PDF"
+],
+highlight: false
+},
 
-          <Helmet>
-            <title>Preços - Stone ERP</title>
-          </Helmet>
+{
+name: "Profissional",
+price: "79",
+desc: "Mais vendido",
+features: [
+"Clientes ilimitados",
+"Orçamentos ilimitados",
+"Produção",
+"Estoque",
+"Relatórios"
+],
+highlight: true
+},
 
-          <div className="text-center max-w-2xl mx-auto mb-12">
+{
+name: "Empresarial",
+price: "149",
+desc: "Empresas grandes",
+features: [
+"Usuários ilimitados",
+"API",
+"Suporte VIP",
+"Tudo liberado"
+],
+highlight: false
+}
 
-            <h1 className="text-3xl font-bold text-stone-900 tracking-tight mb-4">
+];
 
-              Planos Flexíveis para sua Marmoraria
 
-            </h1>
+return (
 
-            <p className="text-stone-500 text-lg">
+<div className="flex h-screen">
 
-              Teste grátis por 7 dias. Sem compromisso.
+<Sidebar />
 
-            </p>
+<div className="flex-1">
 
-          </div>
+<Header />
 
+<main className="p-10">
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto items-end">
+<h1 className="text-3xl font-bold mb-10">
 
+Planos
 
-            {/* PLANO GRÁTIS 7 DIAS */}
+</h1>
 
-            <Card className="rounded-2xl border-emerald-500 border-2 shadow-sm bg-white hover:shadow-lg transition-all duration-300">
 
-              <CardHeader className="p-8">
+<div className="grid grid-cols-4 gap-6">
 
-                <CardTitle className="text-xl font-bold text-stone-900">
 
-                  Plano Grátis 7 Dias
+{plans.map((plan,index)=> (
 
-                </CardTitle>
 
+<Card key={index}
 
-                <div className="mt-4 flex items-baseline text-emerald-600">
+className={plan.highlight
 
-                  <span className="text-4xl font-extrabold tracking-tight">
+?
 
-                    Grátis
+"border-blue-500 shadow-xl"
 
-                  </span>
+:
 
-                </div>
+"border"
 
+}
 
-                <CardDescription className="mt-4 text-stone-500">
+>
 
-                  Teste todas as funcionalidades gratuitamente.
 
-                </CardDescription>
+<CardHeader>
 
-              </CardHeader>
+<CardTitle>
 
+{plan.name}
 
-              <CardContent className="p-8 pt-0">
+</CardTitle>
 
-                <ul className="space-y-4">
 
-                  {[
+<CardDescription>
 
-                    'Clientes ilimitados',
+R${plan.price}/mês
 
-                    'Orçamentos ilimitados',
+</CardDescription>
 
-                    'Financeiro completo',
 
-                    'Produção completa',
+</CardHeader>
 
-                    'Suporte básico'
 
-                  ].map((feature) => (
+<CardContent>
 
-                    <li key={feature} className="flex items-start">
 
-                      <Check className="h-5 w-5 text-emerald-500" />
+{plan.features.map((item,i)=>(
 
-                      <p className="ml-3 text-sm text-stone-600">
 
-                        {feature}
+<div key={i} className="flex gap-2 mb-2">
 
-                      </p>
+<Check size={16}/>
 
-                    </li>
+{item}
 
-                  ))}
+</div>
 
-                </ul>
 
-              </CardContent>
+))}
 
 
-              <CardFooter className="p-8 pt-0">
+</CardContent>
 
-                <Button className="w-full bg-emerald-500 text-white hover:bg-emerald-600 font-semibold group">
 
-                  Começar teste grátis
+<CardFooter>
 
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
 
-                </Button>
+<Button className="w-full">
 
-              </CardFooter>
+Começar
 
-            </Card>
+</Button>
 
 
+</CardFooter>
 
-            {/* PLANO BÁSICO */}
 
-            <Card className="rounded-2xl border-stone-200 shadow-sm bg-white hover:shadow-lg transition-all duration-300">
+</Card>
 
-              <CardHeader className="p-8">
 
-                <CardTitle className="text-xl font-bold text-stone-900">
+))}
 
-                  Plano Básico
 
-                </CardTitle>
+</div>
 
+</main>
 
-                <div className="mt-4 flex items-baseline text-stone-900">
+</div>
 
-                  <span className="text-4xl font-extrabold tracking-tight">
+</div>
 
-                    R$29
+);
 
-                  </span>
+};
 
-                  <span className="ml-1 text-xl font-semibold text-stone-500">
-
-                    /mês
-
-                  </span>
-
-                </div>
-
-
-                <CardDescription className="mt-4 text-stone-500">
-
-                  Para pequenas marmorarias.
-
-                </CardDescription>
-
-              </CardHeader>
-
-
-              <CardFooter className="p-8 pt-0">
-
-                <Button className="w-full bg-stone-100 text-stone-900 hover:bg-stone-200 font-semibold group">
-
-                  Assinar
-
-                </Button>
-
-              </CardFooter>
-
-            </Card>
-
-
-
-            {/* PLANO PRO */}
-
-            <Card className="rounded-2xl border-stone-200 shadow-xl bg-white relative scale-105 z-10 border-t-4 border-t-stone-900">
-
-
-              <div className="absolute top-0 right-0 -mt-3 mr-4">
-
-                <Badge className="bg-stone-900 text-white">
-
-                  MAIS POPULAR
-
-                </Badge>
-
-              </div>
-
-
-              <CardHeader className="p-8">
-
-                <CardTitle className="text-xl font-bold text-stone-900">
-
-                  Plano Pro
-
-                </CardTitle>
-
-
-                <div className="mt-4 flex items-baseline text-stone-900">
-
-                  <span className="text-5xl font-extrabold tracking-tight">
-
-                    R$49
-
-                  </span>
-
-                  <span className="ml-1 text-xl font-semibold text-stone-500">
-
-                    /mês
-
-                  </span>
-
-                </div>
-
-
-                <CardDescription className="mt-4 text-stone-500">
-
-                  Melhor custo benefício.
-
-                </CardDescription>
-
-              </CardHeader>
-
-
-              <CardFooter className="p-8 pt-0">
-
-                <Button className="w-full bg-stone-900 text-white hover:bg-stone-800 font-semibold h-12 text-base group shadow-lg">
-
-                  Assinar
-
-                </Button>
-
-              </CardFooter>
-
-            </Card>
-
-
-
-            {/* EMPRESARIAL */}
-
-            <Card className="rounded-2xl border-stone-200 shadow-sm bg-white hover:shadow-lg transition-all duration-300">
-
-              <CardHeader className="p-8">
-
-                <CardTitle className="text-xl font-bold text-stone-900">
-
-                  Empresarial
-
-                </CardTitle>
-
-
-                <div className="mt-4 flex items-baseline text-stone-900">
-
-                  <span className="text-4xl font-extrabold tracking-tight">
-
-                    R$99
-
-                  </span>
-
-                  <span className="ml-1 text-xl font-semibold text-stone-500">
-
-                    /mês
-
-                  </span>
-
-                </div>
-
-              </CardHeader>
-
-
-              <CardFooter className="p-8 pt-0">
-
-                <Button className="w-full bg-stone-100 text-stone-900 hover:bg-stone-200 font-semibold group">
-
-                  Assinar
-
-                </Button>
-
-              </CardFooter>
-
-            <
+export default PricingPage;
