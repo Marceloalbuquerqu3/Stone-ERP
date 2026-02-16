@@ -34,3 +34,25 @@
     backdrop-filter: blur(12px);
   }
 }
+button {
+background: #2563eb;
+color: white;
+border-radius: 8px;
+padding: 10px 16px;
+border: none;
+cursor: pointer;
+transition: 0.2s;
+}
+
+button:hover {
+background: #1d4ed8;
+}
+
+.btn-primary {
+background: #2563eb;
+color: white;
+}
+
+.btn-primary:hover {
+background: #1d4ed8;
+}
