@@ -1,84 +1,113 @@
-import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
-import { Check } from 'lucide-react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
 
-const plans = [
-{
-name: 'Plano Grátis 7 Dias',
-price: 'Grátis',
-button: 'Começar Teste',
-features: [
-'Até 5 clientes',
-'Até 5 orçamentos',
-'Financeiro básico',
-'Suporte email'
-]
-},
-{
-name: 'Starter',
-price: 'R$49',
-button: 'Começar Starter',
-features: [
-'Até 15 clientes',
-'Até 30 orçamentos',
-'Gerar PDF',
-'Financeiro completo'
-]
-},
-{
-name: 'Profissional',
-price: 'R$79',
-button: 'Começar Profissional',
-highlight: true,
-features: [
-'Clientes ilimitados',
-'Orçamentos ilimitados',
-'Estoque',
-'Relatórios'
-]
-},
-{
-name: 'Empresarial',
-price: 'R$149',
-button: 'Falar com vendas',
-features: [
-'Múltiplos usuários',
-'API',
-'Suporte VIP'
-]
-}
-]
+Layers,
+ArrowRight,
+CheckCircle,
+Users,
+BarChart3,
+Package
+
+} from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function HomePage() {
 
+const plans = [
+
+{
+name: "Grátis 7 dias",
+price: "0",
+button: "Começar grátis",
+highlight: false,
+features: [
+"5 clientes",
+"5 orçamentos",
+"Financeiro básico"
+]
+},
+
+{
+name: "Starter",
+price: "49",
+button: "Começar Starter",
+highlight: false,
+features: [
+"15 clientes",
+"30 orçamentos",
+"Gerar PDF"
+]
+},
+
+{
+name: "Profissional",
+price: "79",
+button: "Começar Profissional",
+highlight: true,
+features: [
+"Clientes ilimitados",
+"Orçamentos ilimitados",
+"Estoque completo"
+]
+},
+
+{
+name: "Empresarial",
+price: "149",
+button: "Falar com vendas",
+highlight: false,
+features: [
+"Multi usuários",
+"API",
+"Suporte VIP"
+]
+}
+
+];
+
 return (
 
-<div>
+<div className="bg-white">
 
-{/* HERO */}
+{/* NAVBAR */}
 
-<section className="py-24">
+<nav className="flex justify-between items-center p-6 max-w-7xl mx-auto">
 
-<div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+<div className="flex items-center gap-2">
 
+<div className="bg-black p-2 rounded">
 
-<div>
+<Layers className="text-white"/>
 
-<h1 className="text-5xl font-bold mb-4">
+</div>
 
-Sistema completo para Marmorarias
+<span className="font-bold text-xl">
 
-</h1>
+Stone ERP
 
-<p className="text-xl text-gray-600 mb-6">
+</span>
 
-Controle clientes, financeiro e produção em um só lugar
+</div>
 
-</p>
+<div className="flex gap-4">
+
+<Link to="/login">
+
+<Button variant="ghost">
+
+Entrar
+
+</Button>
+
+</Link>
 
 <Link to="/signup">
 
-<Button size="lg">
+<Button>
 
 Começar grátis
 
@@ -88,27 +117,162 @@ Começar grátis
 
 </div>
 
+</nav>
 
-<img
 
-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+{/* HERO */}
 
-className="rounded-xl shadow-xl"
+<section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 items-center gap-10">
+
+
+<motion.div
+
+initial={{ opacity:0, y:40 }}
+
+animate={{ opacity:1, y:0 }}
+
+>
+
+<h1 className="text-5xl font-bold leading-tight">
+
+Sistema completo
+
+<br/>
+
+para Marmorarias
+
+</h1>
+
+
+<p className="text-gray-500 mt-4 text-lg">
+
+Controle clientes, estoque e financeiro em um único lugar.
+
+</p>
+
+
+<Link to="/signup">
+
+<Button className="mt-6">
+
+Começar grátis
+
+<ArrowRight className="ml-2"/>
+
+</Button>
+
+</Link>
+
+
+</motion.div>
+
+
+{/* IMAGE */}
+
+<motion.img
+
+initial={{ opacity:0, scale:0.9 }}
+
+animate={{ opacity:1, scale:1 }}
+
+transition={{ delay:0.3 }}
+
+className="rounded-xl shadow-2xl"
+
+src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200"
 
 />
+
+
+</section>
+
+
+{/* FEATURES */}
+
+<section className="bg-gray-50 py-20">
+
+<div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+
+
+<Card>
+
+<CardContent className="p-6">
+
+<Users/>
+
+<h3 className="font-bold mt-3">
+
+Clientes
+
+</h3>
+
+<p className="text-gray-500">
+
+Gerencie facilmente
+
+</p>
+
+</CardContent>
+
+</Card>
+
+
+<Card>
+
+<CardContent className="p-6">
+
+<BarChart3/>
+
+<h3 className="font-bold mt-3">
+
+Financeiro
+
+</h3>
+
+<p className="text-gray-500">
+
+Controle total
+
+</p>
+
+</CardContent>
+
+</Card>
+
+
+<Card>
+
+<CardContent className="p-6">
+
+<Package/>
+
+<h3 className="font-bold mt-3">
+
+Estoque
+
+</h3>
+
+<p className="text-gray-500">
+
+Controle completo
+
+</p>
+
+</CardContent>
+
+</Card>
+
 
 </div>
 
 </section>
 
 
-{/* PLANOS */}
+{/* PRICING */}
 
-<section className="py-24 bg-gray-50">
+<section className="py-20 max-w-7xl mx-auto px-6">
 
-<div className="max-w-6xl mx-auto px-6">
-
-<h2 className="text-4xl font-bold text-center mb-12">
+<h2 className="text-4xl font-bold text-center mb-10">
 
 Planos
 
@@ -117,39 +281,42 @@ Planos
 
 <div className="grid md:grid-cols-4 gap-6">
 
+{plans.map((plan,i)=>(
 
-{plans.map(plan => (
+<motion.div
 
-<div
+key={i}
 
-className={`bg-white p-6 rounded-xl shadow-md ${
-plan.highlight && 'border-2 border-blue-600 scale-105'
-}`}
+whileHover={{ scale:1.05 }}
 
 >
 
+<Card className={plan.highlight ? "border-2 border-blue-500 shadow-xl":"shadow"}>
 
-<h3 className="text-xl font-bold">
+<CardContent className="p-6">
+
+
+<h3 className="font-bold text-xl">
 
 {plan.name}
 
 </h3>
 
 
-<div className="text-3xl font-bold my-4">
+<p className="text-4xl font-bold">
 
-{plan.price}
+{plan.price==="0"?"Grátis":`R$${plan.price}`}
 
-</div>
+</p>
 
 
-<ul className="space-y-2 mb-6">
+<ul className="mt-4 space-y-2">
 
-{plan.features.map(f => (
+{plan.features.map((f,i)=>(
 
-<li className="flex gap-2">
+<li key={i} className="flex gap-2">
 
-<Check size={16}/>
+<CheckCircle size={18}/>
 
 {f}
 
@@ -160,19 +327,20 @@ plan.highlight && 'border-2 border-blue-600 scale-105'
 </ul>
 
 
-<Button className="w-full">
+<Button className="w-full mt-4">
 
 {plan.button}
 
 </Button>
 
 
-</div>
+</CardContent>
+
+</Card>
+
+</motion.div>
 
 ))}
-
-
-</div>
 
 </div>
 
@@ -181,25 +349,31 @@ plan.highlight && 'border-2 border-blue-600 scale-105'
 
 {/* CTA */}
 
-<section className="py-24 text-center">
+<section className="bg-black text-white text-center py-20">
 
-<h2 className="text-4xl font-bold mb-6">
+<h2 className="text-4xl font-bold">
 
-Comece agora
+Comece grátis hoje
 
 </h2>
 
-<Button size="lg">
 
-Criar conta grátis
+<Link to="/signup">
+
+<Button className="mt-6 bg-white text-black">
+
+Criar conta
 
 </Button>
+
+</Link>
+
 
 </section>
 
 
 </div>
 
-)
+);
 
 }
