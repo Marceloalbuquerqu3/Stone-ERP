@@ -29,7 +29,7 @@ const PricingPage = () => {
               <CardHeader className="p-8">
                 <CardTitle className="text-xl font-bold text-stone-900">Plano Básico</CardTitle>
                 <div className="mt-4 flex items-baseline text-stone-900">
-                  <span className="text-4xl font-extrabold tracking-tight">R$49</span>
+                  <span className="text-4xl font-extrabold tracking-tight">R$29</span>
                   <span className="ml-1 text-xl font-semibold text-stone-500">/mês</span>
                 </div>
                 <CardDescription className="mt-4 text-stone-500">
@@ -64,7 +64,7 @@ const PricingPage = () => {
               <CardHeader className="p-8">
                 <CardTitle className="text-xl font-bold text-stone-900">Plano Pro</CardTitle>
                 <div className="mt-4 flex items-baseline text-stone-900">
-                  <span className="text-5xl font-extrabold tracking-tight">R$79</span>
+                  <span className="text-5xl font-extrabold tracking-tight">R$49</span>
                   <span className="ml-1 text-xl font-semibold text-stone-500">/mês</span>
                 </div>
                 <CardDescription className="mt-4 text-stone-500">
@@ -96,7 +96,7 @@ const PricingPage = () => {
               <CardHeader className="p-8">
                 <CardTitle className="text-xl font-bold text-stone-900">Plano Empresarial</CardTitle>
                 <div className="mt-4 flex items-baseline text-stone-900">
-                  <span className="text-4xl font-extrabold tracking-tight">R$149</span>
+                  <span className="text-4xl font-extrabold tracking-tight">R$00</span>
                   <span className="ml-1 text-xl font-semibold text-stone-500">/mês</span>
                 </div>
                 <CardDescription className="mt-4 text-stone-500">
